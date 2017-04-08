@@ -4,7 +4,7 @@ from accounts.models import CustomUser
 
 
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'account_type',)
+    list_display = ('username',)
     search_fields = ('username',)
 
 

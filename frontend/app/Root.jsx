@@ -128,12 +128,13 @@ class LeftNav extends Component {
         return _.map(this.props.rooms, room => ({
             id: room.id,
             text: room.name,
+            room: room,
             icon: <CommunicationChat />,
         }));
     };
 
     render() {
-        const {user, navDrawerOpen, activeRoom} = this.props;
+        const {user, navDrawerOpen, activeRoom, changeActiveRoom} = this.props;
 
         return (
             <Drawer docked={true} open={navDrawerOpen}>
@@ -148,10 +149,11 @@ class LeftNav extends Component {
                 <div>
                     {_.map(this.getMenusData(), (menu, index) =>
                         <MenuItem key={index} style={_.merge(
-                            {},
-                            styles.menuItem,
-                            {color: activeRoom.id === menu.id ? white : grey600})
-                        } primaryText={menu.text} leftIcon={menu.icon} containerElement={<Link to={menu.link} />} />
+                                        {},
+                                        styles.menuItem,
+                                        {color: activeRoom.id === menu.id ? white : grey600})
+                                  } primaryText={menu.text} leftIcon={menu.icon}
+                                  onTouchTap={() => changeActiveRoom(menu.room)} />
                     )}
                 </div>
             </Drawer>
@@ -215,7 +217,8 @@ class Root extends PureComponent {
             <MuiThemeProvider muiTheme={ThemeDefault}>
                 <div>
                     <Header styles={styles.header} handleChangeRequestNavDrawer={::this.handleChangeRequestNavDrawer}/>
-                    <LeftNav navDrawerOpen={navDrawerOpen} activeRoom={activeRoom} />
+                    <LeftNav navDrawerOpen={navDrawerOpen} activeRoom={activeRoom}
+                             changeActiveRoom={newRoom => this.setState({activeRoom: newRoom})} />
                     <div style={styles.container}>
                         {cloneElement(this.props.children, {
                             activeRoom: activeRoom

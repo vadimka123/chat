@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15ad82c7-ab8e-4089-aec0-73188eabbace" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/app/chat/actions/MessagesActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/app/chat/actions/RoomActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/app/chat/components/MessageList.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/app/chat/reducers/MessagesReducer.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/app/chat/reducers/RoomReducer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/message/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/message/api/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/message/api/v1/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/message/api/v1/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/message/migrations/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messages/__init__.py" afterPath="$PROJECT_DIR$/frontend/app/chat/Routing.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messages/admin.py" afterPath="$PROJECT_DIR$/message/admin.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messages/apps.py" afterPath="$PROJECT_DIR$/message/apps.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messages/migrations/__init__.py" afterPath="$PROJECT_DIR$/frontend/app/chat/Constants.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messages/models.py" afterPath="$PROJECT_DIR$/message/models.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messages/tests.py" afterPath="$PROJECT_DIR$/message/tests.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/messages/views.py" afterPath="$PROJECT_DIR$/message/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat/settings.py" afterPath="$PROJECT_DIR$/chat/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/app/App.jsx" afterPath="$PROJECT_DIR$/frontend/app/App.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/app/Root.jsx" afterPath="$PROJECT_DIR$/frontend/app/Root.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/app/utils/stores/RootReducer.js" afterPath="$PROJECT_DIR$/frontend/app/utils/stores/RootReducer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/app/utils/stores/RootStore.js" afterPath="$PROJECT_DIR$/frontend/app/utils/stores/RootStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/index.html" afterPath="$PROJECT_DIR$/frontend/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/package.json" afterPath="$PROJECT_DIR$/frontend/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/room/api/v1/serializers.py" afterPath="$PROJECT_DIR$/room/api/v1/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/room/api/v1/views.py" afterPath="$PROJECT_DIR$/room/api/v1/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/room/models.py" afterPath="$PROJECT_DIR$/room/models.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,26 +47,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MessageList.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/app/chat/components/MessageList.jsx">
+      <file leaf-file-name="Root.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/app/Root.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="35" column="82" lean-forward="false" selection-start-line="35" selection-start-column="82" selection-end-line="35" selection-end-column="82" />
+            <state relative-caret-position="525">
+              <caret line="158" column="21" lean-forward="true" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="21" />
               <folding>
-                <element signature="e#0#54#0" expanded="true" />
+                <element signature="e#0#79#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Root.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/app/Root.jsx">
+      <file leaf-file-name="MenuItem.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/node_modules/material-ui/MenuItem/MenuItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="113" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#79#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="423">
+              <caret line="364" column="12" lean-forward="false" selection-start-line="364" selection-start-column="2" selection-end-line="364" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -178,8 +149,8 @@
         <option value="$PROJECT_DIR$/frontend/app/chat/reducers/RoomReducer.js" />
         <option value="$PROJECT_DIR$/frontend/package.json" />
         <option value="$PROJECT_DIR$/frontend/app/utils/stores/RootStore.js" />
-        <option value="$PROJECT_DIR$/frontend/app/Root.jsx" />
         <option value="$PROJECT_DIR$/frontend/app/chat/components/MessageList.jsx" />
+        <option value="$PROJECT_DIR$/frontend/app/Root.jsx" />
       </list>
     </option>
   </component>
@@ -260,7 +231,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="material-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="material-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MenuItem" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,62 +298,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reducers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -802,14 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/material-ui/MenuItem/MenuItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="273" column="46" lean-forward="false" selection-start-line="273" selection-start-column="25" selection-end-line="273" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/node_modules/material-ui/Menu/Menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -990,22 +945,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/app/Root.jsx">
+    <entry file="file://$PROJECT_DIR$/frontend/app/chat/components/MessageList.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="113" selection-end-column="30" />
+        <state relative-caret-position="442">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
-            <element signature="e#0#79#0" expanded="true" />
+            <element signature="e#0#54#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/app/chat/components/MessageList.jsx">
+    <entry file="file://$PROJECT_DIR$/frontend/node_modules/material-ui/MenuItem/MenuItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="35" column="82" lean-forward="false" selection-start-line="35" selection-start-column="82" selection-end-line="35" selection-end-column="82" />
+        <state relative-caret-position="423">
+          <caret line="364" column="12" lean-forward="false" selection-start-line="364" selection-start-column="2" selection-end-line="364" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/app/Root.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="158" column="21" lean-forward="true" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="21" />
           <folding>
-            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#0#79#0" expanded="true" />
           </folding>
         </state>
       </provider>

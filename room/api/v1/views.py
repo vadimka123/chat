@@ -22,5 +22,8 @@ class RoomListCreateView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         allowed_users = self.request.data['allowed_users']
-        allowed_users = CustomUser.objects.filter(id__in=allowed_users) if allowed_users else None
-        serializer.save(allowed_users=allowed_users, created_at=self.request.user)
+        if allowed_users:
+            allowed_users = CustomUser.objects.filter(id__in=allowed_users) if allowed_users else []
+            serializer.save(allowed_users=allowed_users, created_at=self.request.user)
+        else:
+            serializer.save(created_at=self.request.user)

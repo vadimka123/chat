@@ -20,6 +20,7 @@ INSTALLED_APPS = (
     'rest_framework',
 
     'accounts',
+    'message',
     'room'
 )
 

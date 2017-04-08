@@ -16,4 +16,4 @@ class RoomListCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return Room.objects.filter(Q(created_at=self.request.user) | Q(private=False)).select_related(
-            'created_at', ).prefetch_related('allowed_users')
+            'created_at', ).prefetch_related('allowed_users', 'messages', 'messages__user')

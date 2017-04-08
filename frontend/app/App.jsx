@@ -17,6 +17,7 @@ import {setupAuthHeader, requireAuth, requireStaff} from './accounts/utils/utils
 
 import Root from './Root.jsx';
 import AccountRouting from './accounts/Routing.jsx';
+import MessageList from './chat/components/MessageList.jsx';
 
 
 if (AuthHelper.isAuthenticated) {
@@ -32,6 +33,7 @@ ReactDOM.render((
         <Router history={history}>
             {AccountRouting}
             <Route path="/" component={Root} onEnter={requireAuth}>
+                <IndexRoute component={MessageList} />
             </Route>
         </Router>
     </Provider>

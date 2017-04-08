@@ -1,4 +1,4 @@
-import React, {PureComponent, Component, PropTypes} from 'react';
+import React, {PureComponent, Component, PropTypes, cloneElement} from 'react';
 import {connect} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {spacing, typography} from 'material-ui/styles';
@@ -8,19 +8,18 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import List from 'material-ui/svg-icons/action/list';
-import FileFileUpload from 'material-ui/svg-icons/file/file-upload';
+import CommunicationChat from 'material-ui/svg-icons/communication/chat';
 import Menu from 'material-ui/svg-icons/navigation/menu';
-import {white, blue600} from 'material-ui/styles/colors';
+import {white, blue600, grey600} from 'material-ui/styles/colors';
 import Avatar from 'material-ui/Avatar';
 import Drawer from 'material-ui/Drawer';
 import {Link} from 'react-router';
 import _ from 'lodash';
 
 import ThemeDefault from './theme-default.js';
-import {USER_TYPES, USER_TYPE_TEAM_CHIEF} from './accounts/Constants.js';
 
 import {AccountActions} from './accounts/actions/AccountActions.js';
+import {RoomActions} from './chat/actions/RoomActions.js';
 
 
 @connect()
@@ -87,7 +86,6 @@ const styles = {
         height: 56,
     },
     menuItem: {
-        color: white,
         fontSize: 14
     },
     avatar: {
@@ -110,6 +108,10 @@ const styles = {
     }
 };
 
+@connect(state => ({
+    ...state.AccountReducer,
+    ...state.RoomReducer
+}), null, null, {pure: false})
 class LeftNav extends Component {
     static displayName = 'Left Navigation';
 
@@ -123,48 +125,33 @@ class LeftNav extends Component {
     };
 
     getMenusData() {
-        const {user} = this.props;
-
-        let data = [
-            {
-                text: 'List of Tasks',
-                icon: <List />,
-                link: '/',
-                disabled: this.context.router.isActive('/') && !this.context.router.isActive('/upload/')
-            }
-        ];
-
-        if (user.account_type === USER_TYPE_TEAM_CHIEF)
-            data.push({
-                text: 'Upload List',
-                icon: <FileFileUpload />,
-                link: '/upload/',
-                disabled: this.context.router.isActive('/upload/')
-            });
-
-        return data;
+        return _.map(this.props.rooms, room => ({
+            id: room.id,
+            text: room.name,
+            icon: <CommunicationChat />,
+        }));
     };
 
     render() {
-        const {user, navDrawerOpen} = this.props;
+        const {user, navDrawerOpen, activeRoom} = this.props;
 
         return (
             <Drawer docked={true} open={navDrawerOpen}>
                 <div style={styles.logo}>
-                    Team Manager
+                    Hit Chat
                 </div>
                 <div style={styles.avatar.div}>
                     <Avatar src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg" size={50}
                             style={styles.avatar.icon} />
                     <span style={styles.avatar.span}>{user.username}</span>
-                    <span style={styles.avatar.span}>
-                        {USER_TYPES[user.account_type]}
-                    </span>
                 </div>
                 <div>
                     {_.map(this.getMenusData(), (menu, index) =>
-                        <MenuItem key={index} style={styles.menuItem} primaryText={menu.text} disabled={menu.disabled}
-                                  leftIcon={menu.icon} containerElement={<Link to={menu.link} />} />
+                        <MenuItem key={index} style={_.merge(
+                            {},
+                            styles.menuItem,
+                            {color: activeRoom.id === menu.id ? white : grey600})
+                        } primaryText={menu.text} leftIcon={menu.icon} containerElement={<Link to={menu.link} />} />
                     )}
                 </div>
             </Drawer>
@@ -172,27 +159,38 @@ class LeftNav extends Component {
     };
 }
 
-@connect(state => state.AccountReducer)
+@connect(state => ({
+    ...state.AccountReducer,
+    ...state.RoomReducer
+}), null, null, {pure: false})
 @withWidth()
 class Root extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            navDrawerOpen: true
+            navDrawerOpen: true,
+            activeRoom: {}
         };
     };
 
     static displayName = 'Root';
 
     static propTypes = {
+        dispatch: PropTypes.func.isRequired,
         children: PropTypes.element,
         width: PropTypes.number
     };
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.width === nextProps.width) return;
+    componentWillMount() {
+        this.props.dispatch(RoomActions.list());
+    };
 
-        this.setState({navDrawerOpen: nextProps.width === LARGE});
+    componentWillReceiveProps(nextProps) {
+        if (this.props.width !== nextProps.width)
+            this.setState({navDrawerOpen: nextProps.width === LARGE});
+
+        if (nextProps.rooms.length > 0 && !_.isEqual(nextProps.rooms, this.props.rooms))
+            this.setState({activeRoom: nextProps.rooms[0]})
     };
 
     handleChangeRequestNavDrawer() {
@@ -200,7 +198,7 @@ class Root extends PureComponent {
     };
 
     render() {
-        let {navDrawerOpen} = this.state;
+        let {navDrawerOpen, activeRoom} = this.state;
         const paddingLeftDrawerOpen = 236;
 
         const styles = {
@@ -217,14 +215,16 @@ class Root extends PureComponent {
             <MuiThemeProvider muiTheme={ThemeDefault}>
                 <div>
                     <Header styles={styles.header} handleChangeRequestNavDrawer={::this.handleChangeRequestNavDrawer}/>
-                    <LeftNav navDrawerOpen={navDrawerOpen} user={this.props.user} />
+                    <LeftNav navDrawerOpen={navDrawerOpen} activeRoom={activeRoom} />
                     <div style={styles.container}>
-                        {this.props.children}
+                        {cloneElement(this.props.children, {
+                            activeRoom: activeRoom
+                        })}
                     </div>
                 </div>
             </MuiThemeProvider>
         );
-    }
+    };
 }
 
 export default Root;

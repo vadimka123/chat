@@ -4,10 +4,15 @@ import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import {List, ListItem} from 'material-ui/List';
+import TextField from 'material-ui/TextField';
+import uuidV4 from 'uuid/v4';
 import _ from 'lodash';
 import moment from 'moment';
 
 import globalStyles from '../../styles.js';
+
+import {ChatActions} from '../actions/ChatActions.js';
+import {RoomConstants} from '../Constants.js';
 
 
 @connect(state => state.AccountReducer)
@@ -39,7 +44,10 @@ class MessageItem extends PureComponent {
     };
 }
 
-@connect()
+@connect(state => ({
+    ...state.ChatReducer,
+    ...state.AccountReducer
+}), null, null, {pure: false})
 class MessageList extends PureComponent {
     static displayName = 'Message List';
 
@@ -85,8 +93,27 @@ class MessageList extends PureComponent {
         return result;
     };
 
+    changeInput(value) {
+        this.props.dispatch({
+            type: RoomConstants.ROOM_INPUT_VALUE_CHANGE,
+            room: this.props.activeRoom.id,
+            value: value
+        })
+    };
+
+    submit(e) {
+        if (!e.ctrlKey || e.keyCode !== 13 || !this.props.inputValues[this.props.activeRoom.id]) return;
+
+        this.props.dispatch(ChatActions.createMessage({
+            tmpId: uuidV4(),
+            user: this.props.user,
+            room: this.props.activeRoom.id,
+            message: this.props.inputValues[this.props.activeRoom.id]
+        }));
+    };
+
     render() {
-        const {activeRoom} = this.props;
+        const {activeRoom, inputValues} = this.props;
 
         const messagesGroup = this.groupMessages(_.clone(activeRoom.messages) || []);
 
@@ -104,6 +131,10 @@ class MessageList extends PureComponent {
                         <Divider />
                     </div>
                 )}
+                <TextField hintText="Enter your Message" floatingLabelText="Enter your Message"
+                           fullWidth={true} rows={3} rowsMax={3} multiLine={true}
+                           value={inputValues[activeRoom.id] || ''} onKeyDown={::this.submit}
+                           onChange={e => this.changeInput(e.target.value)} />
                 <div style={globalStyles.clear} />
             </Paper>
         );

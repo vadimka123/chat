@@ -19,7 +19,7 @@ import _ from 'lodash';
 import ThemeDefault from './theme-default.js';
 
 import {AccountActions} from './accounts/actions/AccountActions.js';
-import {RoomActions} from './chat/actions/RoomActions.js';
+import {ChatActions} from './chat/actions/ChatActions.js';
 
 
 @connect()
@@ -110,7 +110,7 @@ const styles = {
 
 @connect(state => ({
     ...state.AccountReducer,
-    ...state.RoomReducer
+    ...state.ChatReducer
 }), null, null, {pure: false})
 class LeftNav extends Component {
     static displayName = 'Left Navigation';
@@ -163,7 +163,7 @@ class LeftNav extends Component {
 
 @connect(state => ({
     ...state.AccountReducer,
-    ...state.RoomReducer
+    ...state.ChatReducer
 }), null, null, {pure: false})
 @withWidth()
 class Root extends PureComponent {
@@ -184,7 +184,7 @@ class Root extends PureComponent {
     };
 
     componentWillMount() {
-        this.props.dispatch(RoomActions.list());
+        this.props.dispatch(ChatActions.list());
     };
 
     componentWillReceiveProps(nextProps) {

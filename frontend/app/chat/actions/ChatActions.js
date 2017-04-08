@@ -20,6 +20,29 @@ class _ChatActions {
         }
     }
 
+    createRoom(room) {
+        return dispatch => {
+            dispatch({
+                type: RoomConstants.ROOM_CREATE,
+                room: room
+            });
+
+            axios.post('/api/v1/room/', room).then(response => {
+                dispatch({
+                    type: RoomConstants.ROOM_CREATE_SUCCESS,
+                    room: room,
+                    data: response.data
+                });
+            }).catch(error => {
+                dispatch({
+                    type: RoomConstants.ROOM_CREATE_FAIL,
+                    room: room,
+                    data: error.response ? error.response.data : {}
+                });
+            });
+        }
+    }
+
     createMessage(message) {
         return dispatch => {
             dispatch({

@@ -5,15 +5,32 @@ import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import {List, ListItem} from 'material-ui/List';
 import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import {pink500} from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import _ from 'lodash';
 import moment from 'moment';
 
 import globalStyles from '../../styles.js';
 
+import {AccountActions} from '../../accounts/actions/AccountActions.js';
 import {ChatActions} from '../actions/ChatActions.js';
 import {RoomConstants} from '../Constants.js';
 
+import {CreateRoomModal} from './CreateRoomModal.jsx';
+
+
+const styles = {
+    floatingActionButton: {
+        margin: 0,
+        top: 'auto',
+        right: 20,
+        bottom: 20,
+        left: 'auto',
+        position: 'fixed',
+    }
+};
 
 @connect(state => state.AccountReducer)
 class MessageItem extends PureComponent {
@@ -49,12 +66,24 @@ class MessageItem extends PureComponent {
     ...state.AccountReducer
 }), null, null, {pure: false})
 class MessageList extends PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showCreateModal: false
+        };
+    };
+
     static displayName = 'Message List';
 
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
         activeRoom: PropTypes.object.isRequired
     };
+
+    componentWillMount() {
+        this.props.dispatch(AccountActions.list());
+    }
 
     groupMessages(messages) {
         let result = {}, resultKeys = [], prev_message = null;
@@ -121,6 +150,12 @@ class MessageList extends PureComponent {
             <Paper style={globalStyles.paper}>
                 <h3 style={globalStyles.title}>{activeRoom.name}</h3>
                 <Divider />
+                <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}
+                                      onClick={() => this.setState({showCreateModal: true})}>
+                    <ContentAdd />
+                    <CreateRoomModal show={this.state.showCreateModal}
+                                     onHide={() => this.setState({showCreateModal: false})} />
+                </FloatingActionButton>
                 {_.map(messagesGroup, (messages, key) =>
                     <div key={key}>
                         <List>

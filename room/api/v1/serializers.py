@@ -1,14 +1,15 @@
 from rest_framework import serializers
 
 from accounts.api.v1.serializers import UserFullSerializer
+from accounts.models import CustomUser
 from message.api.v1.serializers import MessageSerializer
 from room.models import Room
 
 
 class RoomSerializer(serializers.ModelSerializer):
-    allowed_users = UserFullSerializer(many=True, allow_null=True)
-    created_at = UserFullSerializer()
-    messages = MessageSerializer(many=True)
+    allowed_users = UserFullSerializer(many=True, allow_null=True, read_only=True)
+    created_at = serializers.PrimaryKeyRelatedField(queryset=CustomUser.objects.all())
+    messages = MessageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Room

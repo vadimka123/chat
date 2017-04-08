@@ -10,12 +10,12 @@ class _AccountActions {
         return dispatch => {
             axios.get('/api/v1/account/').then(response => {
                 dispatch({
-                    type: AccountConstants.DEVELOPER_LIST_SUCCESS,
+                    type: AccountConstants.USER_LIST_SUCCESS,
                     data: response.data
                 });
             }).catch(error => {
                 dispatch({
-                    type: AccountConstants.DEVELOPER_LIST_FAIL,
+                    type: AccountConstants.USER_LIST_FAIL,
                     data: error.response ? error.response.data : {}
                 });
             });

@@ -6,6 +6,7 @@ import {RoomConstants} from '../Constants.js';
 
 const initialState = {
     rooms: [],
+    saving: false,
     inputValues: {}
 };
 
@@ -14,6 +15,7 @@ export default (state=initialState, action) => {
         case LOCATION_CHANGE:
             state = {
                 rooms: [],
+                saving: false,
                 inputValues: {}
             };
             break;
@@ -30,6 +32,20 @@ export default (state=initialState, action) => {
             let newInput = {};
             newInput[action.room] = action.value;
             state.inputValues = _.merge({}, state.inputValues, newInput);
+            break;
+
+        case RoomConstants.ROOM_CREATE:
+            state.saving = true;
+            break;
+
+        case RoomConstants.ROOM_CREATE_SUCCESS:
+            state.saving = false;
+            state.rooms = _.concat([], state.rooms, [action.data]);
+            break;
+
+        case RoomConstants.ROOM_CREATE_FAIL:
+            // TODO: handle errors
+            state.saving = false;
             break;
 
         case RoomConstants.MESSAGE_CREATE:

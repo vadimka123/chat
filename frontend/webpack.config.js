@@ -15,8 +15,7 @@ module.exports = {
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production')
-                },
-                'SOCKET_IP': null,
+                }
             }),
             new BundleTracker({filename: './build/webpack-stats.json'})
         ] : [

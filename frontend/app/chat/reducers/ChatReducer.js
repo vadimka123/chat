@@ -61,14 +61,14 @@ export default (state=initialState, action) => {
         case RoomConstants.MESSAGE_CREATE_SUCCESS:
             state.rooms = _.map(state.rooms, room => {
                 if (action.message.room === room.id)
-                    room.messages = _.map(room.messages, message => {
+                    room.messages = action.message ?_.map(room.messages, message => {
                         if (message.tmpId && message.tmpId === action.message.tmpId) {
                             delete action.message.tmpId;
                             message = _.merge({}, message, action.data);
                         }
 
                         return message;
-                    });
+                    }) : _.concat([], room.messages, [action.data]);
 
                 return room;
             });

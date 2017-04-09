@@ -20,6 +20,8 @@ import {RoomConstants} from '../Constants.js';
 
 import {CreateRoomModal} from './CreateRoomModal.jsx';
 
+import {Socket} from '../../utils/Socket.js';
+
 
 const styles = {
     floatingActionButton: {
@@ -82,8 +84,27 @@ class MessageList extends PureComponent {
     };
 
     componentWillMount() {
+        Socket.addEventListener('message_create', this.props.rooms, ::this.message_create);
         this.props.dispatch(AccountActions.list());
+    };
+
+    componentWillReceiveProps(nextProps) {
+        if (_.isEqual(this.props.rooms, nextProps.rooms)) return;
+
+        Socket.removeAllListeners('message_create');
+        Socket.addEventListener('message_create', nextProps.rooms, ::this.message_create);
     }
+
+    message_create(data) {
+        console.log(data);
+
+        if (data.user.id === this.props.user.id) return;
+
+        this.props.dispatch({
+            type: RoomConstants.MESSAGE_CREATE_SUCCESS,
+            data: data
+        });
+    };
 
     groupMessages(messages) {
         let result = {}, resultKeys = [], prev_message = null;
@@ -160,7 +181,7 @@ class MessageList extends PureComponent {
                     <div key={key}>
                         <List>
                             {_.map(messages, (message, index) =>
-                                <MessageItem key={message.id} index={index} message={message} />
+                                <MessageItem key={message.id || message.tmpId} index={index} message={message} />
                             )}
                         </List>
                         <Divider />

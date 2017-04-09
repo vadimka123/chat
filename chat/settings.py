@@ -86,6 +86,9 @@ JWT_AUTH = {
     'JWT_PAYLOAD_GET_USERNAME_HANDLER': 'accounts.api.utils.jwt.jwt_get_username_from_payload_handler'
 }
 
+WS_SERVER_IP = '127.0.0.1'
+WS_SERVER_PORT = 8283
+
 try:
     from local_settings import *
 except ImportError:

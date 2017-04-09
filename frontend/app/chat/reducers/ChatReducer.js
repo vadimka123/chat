@@ -60,7 +60,7 @@ export default (state=initialState, action) => {
 
         case RoomConstants.MESSAGE_CREATE_SUCCESS:
             state.rooms = _.map(state.rooms, room => {
-                if (action.data.room.id === room.id)
+                if (action.data.room === room.id)
                     room.messages = action.message ? _.map(room.messages, message => {
                         if (message.tmpId && message.tmpId === action.message.tmpId) {
                             delete action.message.tmpId;

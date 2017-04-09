@@ -4,7 +4,7 @@
   "repository": "https://github.com/vadimka123/chat",
   "version": "1.0.0",
   "scripts": {
-    "build": "ENTRY=./app/App.jsx webpack --progress",
+    "build": "ENTRY=./app/App.jsx webpack --progress && sw-precache --config=sw-precache-config.js",
     "build-prod": "NODE_ENV=production ENTRY=./app/App.jsx webpack -p --progress",
     "watch": "ENTRY=./app/App.jsx webpack --progress --watch --watch-poll"
   },
@@ -28,6 +28,7 @@
     "redux-logger": "^2.10.2",
     "redux-thunk": "^2.2.0",
     "socket.io-client": "^1.7.3",
+    "sw-precache": "^5.1.0",
     "uuid": "^3.0.1"
   },
   "devDependencies": {

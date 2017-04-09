@@ -38,7 +38,7 @@ class Message(models.Model):
         with self.socket_io:
             data = model_to_dict(self)
             data['user'] = model_to_dict(self.user, fields=('id', 'username',))
-            data['room'] = {'id': self.room.id}
+            data['room'] = self.room.id
             self.socket_io.emit('message_create', data)
 
         return message

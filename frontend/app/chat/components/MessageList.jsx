@@ -8,11 +8,12 @@ import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentSend from 'material-ui/svg-icons/content/send';
+import Done from 'material-ui/svg-icons/action/done';
 import IconButton from 'material-ui/IconButton';
+import CircularProgress from 'material-ui/CircularProgress';
 import {pink500} from 'material-ui/styles/colors';
 import uuidV4 from 'uuid/v4';
 import _ from 'lodash';
-import moment from 'moment';
 
 import globalStyles from '../../styles.js';
 
@@ -46,7 +47,7 @@ class MessageItem extends PureComponent {
     };
 
     render() {
-        const {message, index} = this.props;
+        const {message} = this.props;
 
         const userAvatar = <Avatar src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg" />;
 
@@ -56,6 +57,9 @@ class MessageItem extends PureComponent {
         };
 
         props[this.props.user.id === message.user.id ? 'leftAvatar' : 'rightAvatar'] = userAvatar;
+
+        if (this.props.user.id === message.user.id)
+            props.rightIcon = message.tmpId ? <CircularProgress style={{marginTop: 6, marginRight: 25}} /> : <Done />;
 
         return <ListItem {...props} />;
     };

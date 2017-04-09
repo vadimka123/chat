@@ -24,7 +24,7 @@ def enter_room(sid, room):
 
 @sio.on('message_create')
 def message_create(sid, data):
-    room = data['room']
+    room = data['room']['id']
     print ("Received data from client {}: {})".format(sid, data))
     sio.emit('message_create', data, room=room, skip_sid=sid)
 

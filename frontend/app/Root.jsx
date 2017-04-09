@@ -185,6 +185,9 @@ class Root extends PureComponent {
 
     componentWillMount() {
         this.props.dispatch(ChatActions.list());
+
+        if (this.props.width !== LARGE)
+            this.setState({navDrawerOpen: false});
     };
 
     componentWillReceiveProps(nextProps) {

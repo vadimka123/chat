@@ -34,6 +34,8 @@ const loggerMiddleware = createLogger({
     logErrors: true
 });
 
+
+
 const createStoreWithMiddleware = applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware, loggerMiddleware)(createStore);
 
 const store = createStoreWithMiddleware(RootReducer);

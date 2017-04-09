@@ -21,7 +21,7 @@ class _Socket {
 
         this._socket.on('connect', () => {
             _.map(rooms, room => {
-                this._socket.emit('room', room.id);
+                this._socket.emit('enter_room', room.id);
             });
         });
     }
